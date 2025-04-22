@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">Ester University</div>
+        <ul>
+          <li><a href="/grades/">Grades</a></li>
+          <li><a href="/students/">Classmates</a></li>
+          <li><a href="/profile/">Profile</a></li>
+          <li><a href="/logout/">Logout</a></li>
+        </ul>
+      </nav>
+    
+    
+  <div class="container">
+    <section>
+      <h2>Welcome, {{ username }}</h2>
+      <p>Role: Admin</p>
+    </section>
+    <section>
+      <p>This is your admin panel. You can manage all users and institutional settings here.</p>
+    </section>
+  </div>
+</body>
+</html>

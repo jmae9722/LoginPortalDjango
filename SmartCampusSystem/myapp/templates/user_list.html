@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Directory | Ester University</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-logo">Ester University</div>
+            <ul>
+              <li><a href="/grades/">Grades</a></li>
+             <li> <a href="{% url 'user_list' %}">Student Directory</a></li>
+    
+              <li><a href="/profile/">Profile</a></li>
+              <li><a href="/logout/">Logout</a></li>
+            </ul>
+          </nav>
+        
+        <section class="content">
+            <h2>Student Directory</h2>
+
+            {% if is_student %}
+                <h3>Your Classmates</h3>
+                <ul class="user-list">
+                    {% for user in classmates %}
+                        <li>{{ user.username }} – {{ user.major }}</li>
+                    {% empty %}
+                        <li>No classmates found.</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h3>Students</h3>
+                <ul class="user-list">
+                    {% for user in students %}
+                        <li>{{ user.username }} – {{ user.major }}</li>
+                    {% empty %}
+                        <li>No students found.</li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Faculty</h3>
+                <ul class="user-list">
+                    {% for user in faculty %}
+                        <li>{{ user.username }}</li>
+                    {% empty %}
+                        <li>No faculty found.</li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Admins</h3>
+                <ul class="user-list">
+                    {% for user in admins %}
+                        <li>{{ user.username }}</li>
+                    {% empty %}
+                        <li>No admins found.</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>

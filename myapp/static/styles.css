@@ -1,0 +1,446 @@
+/* ========== RESET & BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background-color: #f8f9fa; /* eggshell white */
+    color: #1d1d1f;
+    min-height: 100vh;
+  }
+  
+  /* ========== NAVIGATION ========== */
+  nav {
+    background-color: #000; /* black */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #007aff;
+  }
+  
+  /* ========== LOGIN BOX WRAPPER ========== */
+  .login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+  }
+  
+  .login-box {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* ========== LOGIN BOX CONTENT ========== */
+  .login-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #1d1d1f;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  select {
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #007aff;
+    outline: none;
+  }
+  
+  button {
+    background-color: #007aff;
+    color: white;
+    padding: 0.75rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #005ecb;
+  }
+  
+  /* ========== ERROR & NOTE ========== */
+  .error-msg {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .register-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .register-note a {
+    color: #ff6600; /* branding accent */
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .register-note a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ========== RESPONSIVE ========== */
+  @media screen and (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+  
+    .login-box {
+      width: 90%;
+    }
+  }
+  
+  /* DASHBOARD STYLING */
+.dashboard-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  .dashboard-container h1 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 1rem;
+  }
+  
+  .role-badge, .major {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  
+  .section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f5f5f7;
+    border-left: 4px solid #007aff;
+    border-radius: 8px;
+  }
+  
+  .section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #1d1d1f;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #eef3ff;
+  }
+  
+  .gpa-result {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #007aff;
+    font-weight: bold;
+  }
+  
+  /* Ensure Nav Matches Global Nav */
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #007aff;
+  }
+  
+  /* =============================== */
+/* DASHBOARD PAGE ENHANCEMENTS */
+/* =============================== */
+
+.dashboard-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 2rem 2rem 3rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  .dashboard-container h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #111;
+  }
+  
+  .dashboard-container p {
+    font-size: 1.05rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* GPA Section */
+  .section {
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem;
+    background-color: #f4f6f9;
+    border-left: 5px solid #007aff;
+    border-radius: 10px;
+  }
+  
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1d1d1f;
+  }
+  
+  /* GPA Input */
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #eef3ff;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  
+  textarea:focus {
+    border-color: #007aff;
+    outline: none;
+  }
+  
+  /* GPA Result Display */
+  .gpa-result {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    color: #007aff;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Form Submit Button */
+  .section button[type="submit"] {
+    margin-top: 1rem;
+    background-color: #007aff;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .section button[type="submit"]:hover {
+    background-color: #005ecb;
+  }
+  
+  /* Responsive Touch-up */
+  @media screen and (max-width: 768px) {
+    .dashboard-container {
+      padding: 1.5rem;
+      margin: 2rem 1rem;
+    }
+  
+    .section {
+      padding: 1.2rem;
+    }
+  
+    .section h2 {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* GRADES PAGE STYLING */
+.grades-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  .grades-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1d1d1f;
+  }
+  
+  .grades-note {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  .grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+  }
+  
+  .grades-table th,
+  .grades-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .grades-table th {
+    background-color: #f0f0f0;
+    color: #1d1d1f;
+  }
+  
+  .grades-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* PROFILE PAGE */
+.profile-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  .profile-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #1d1d1f;
+    text-align: center;
+  }
+  
+  .profile-card {
+    background-color: #f5f5f7;
+    padding: 1.5rem;
+    border-left: 4px solid #007aff;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .profile-card p {
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  /* ========== FACULTY DASHBOARD STYLES ========== */
+
+.tool-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+  }
+  
+  .tool-list li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: #333;
+    padding-left: 1rem;
+    position: relative;
+  }
+  
+  .tool-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #ff6600; /* Branding orange */
+    font-size: 1.2rem;
+  }
+  
+  .btn-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    background-color: #007aff;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-link:hover {
+    background-color: #005ecb;
+  }
+  
+  .login-fields input,
+  .login-fields button {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .login-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  

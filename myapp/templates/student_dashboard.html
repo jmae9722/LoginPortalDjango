@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard | Ester University</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">Ester University</div>
+    <ul>
+      <li><a href="/dashboard/">Dashboard</a></li>
+      <li><a href="/grades/">Grades</a></li>
+      <li><a href="/profile/">Profile</a></li>
+      <li><a href="/logout/">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Section -->
+  <div class="dashboard-container">
+    <h1>Welcome, {{ username }}</h1>
+    <p>Major: {{ major }}</p>
+    <p>Role: {{ role }}</p>
+
+    <section class="gpa-section">
+      <h2>GPA Calculator</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <label for="courses">Enter your courses and grades (e.g. Math 101: A)</label>
+        <textarea name="courses" placeholder="One per line..." rows="6"></textarea>
+        <button type="submit">Calculate GPA</button>
+      </form>
+      {% if gpa %}
+        <div class="gpa-result">
+          <strong>Your GPA: {{ gpa }}</strong>
+        </div>
+      {% endif %}
+    </section>
+  </div>
+
+</body>
+</html>

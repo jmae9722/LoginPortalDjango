@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | Ester University</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">Ester University</div>
+    <ul>
+      <li><a href="/">Home</a></li>
+
+      <li><a href="{% url 'login' %}">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Register Section -->
+  <div class="login-wrapper">
+    <div class="login-box">
+      <h2>Create Your Account</h2>
+
+      {% if messages %}
+        {% for message in messages %}
+          <p class="error-msg">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+
+      <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <label for="role">Select Role:</label>
+        <select name="role" id="role" onchange="handleRoleSelect()" required>
+          <option value="">-- Choose your role --</option>
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <!-- Show for Students -->
+        <div id="student-major" style="display: none; margin-top: 1rem;">
+          <input type="text" name="major" placeholder="Major (for students)">
+        </div>
+
+        <!-- Show for Faculty -->
+        <div id="faculty-dept" style="display: none; margin-top: 1rem;">
+          <input type="text" name="major" placeholder="Department (for faculty)">
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+
+      <div class="register-note">
+        Already have an account? <a href="{% url 'login' %}">Log in here</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleRoleSelect() {
+      const role = document.getElementById("role").value;
+      const majorField = document.getElementById("student-major");
+      const deptField = document.getElementById("faculty-dept");
+
+      if (role === "student") {
+        majorField.style.display = "block";
+        deptField.style.display = "none";
+      } else if (role === "faculty") {
+        deptField.style.display = "block";
+        majorField.style.display = "none";
+      } else {
+        majorField.style.display = "none";
+        deptField.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

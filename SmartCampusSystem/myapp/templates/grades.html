@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grades | Ester University</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">Ester University</div>
+    <ul>
+      <li><a href="/dashboard/">Dashboard</a></li>
+      <li><a href="/grades/">Grades</a></li>
+      <li><a href="/profile/">Profile</a></li>
+      <li><a href="/logout/">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="grades-container">
+    <h1>Your Grades</h1>
+
+    <div class="grades-note">
+      Copy and paste these into your GPA calculator for results.
+    </div>
+
+    <table class="grades-table">
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course, grade in grades.items %}
+        <tr>
+          <td>{{ course }}</td>
+          <td>{{ grade }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

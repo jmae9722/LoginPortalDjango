@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile | Ester University</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">Ester University</div>
+    <ul>
+      <li><a href="/dashboard/">Dashboard</a></li>
+      <li><a href="/grades/">Grades</a></li>
+      <li><a href="/profile/">Profile</a></li>
+      <li><a href="/logout/">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="profile-container">
+    <h1>My Profile</h1>
+
+    <div class="profile-card">
+      <p><strong>Username:</strong> {{ username }}</p>
+      <p><strong>Role:</strong> {{ role|title }}</p>
+      <p><strong>Major:</strong> {{ major|default:"N/A" }}</p>
+    </div>
+  </div>
+
+</body>
+</html>
