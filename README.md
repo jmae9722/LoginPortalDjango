@@ -7,7 +7,7 @@ This project was designed for learning, practicing, and demonstrating core backe
 
 ## 🛠 Tech Stack
 
-- 🌐 **Django** 4.2.20 (Backend Framework)
+- 🌐 **Django 4.2.20** (Backend Framework)
 - 🎨 **Bootstrap 5** (Frontend Styling)
 - 🛡 **Django REST Framework** (APIs and security foundations)
 - 🔒 **JWT Authentication Setup** (Simple JWT installed and ready!)
@@ -31,42 +31,43 @@ This project was designed for learning, practicing, and demonstrating core backe
 1. Clone the repo  
    ```bash
    git clone https://github.com/jmae9722/LoginPortalDjango.git
-Navigate into the project directory
+   ```
 
+2. Navigate into the project directory  
+   ```bash
+   cd LoginPortalDjango
+   ```
 
-cd LoginPortalDjango
-Create a virtual environment
+3. Create a virtual environment  
+   ```bash
+   python3 -m venv env
+   source env/bin/activate
+   ```
 
+4. Install the required packages  
+   ```bash
+   pip install django djangorestframework djangorestframework-simplejwt
+   ```
 
-python3 -m venv env
-source env/bin/activate
-Install the required packages
+5. Run the server  
+   ```bash
+   python manage.py runserver
+   ```
 
-
-pip install django djangorestframework djangorestframework-simplejwt
-Run the server
-
-
-python manage.py runserver
-Open your browser and visit http://127.0.0.1:8000/
-
-✨ Future Plans
-🎓 GPA Calculator fully integrated!
-
-📧 Password Reset Flow
-
-🌍 Live Deployment (maybe 🚀)
-
-🎨 More polish on UI/UX
-
-Made with ❤️ by jmae9722
-
+6. Open your browser and visit  
+   ```bash
+   http://127.0.0.1:8000/
+   ```
 
 ---
 
-**Would you like me to also**:
-- Add some *animated* emoji headers too? (like sparkle backgrounds ✨)  
-- Help you upload a project screenshot into the README?
+## ✨ Future Plans
 
-🎨 Let’s make it even cuter if you want!  
-Just tell me! 🚀✨
+- 🎓 GPA Calculator fully integrated
+- 📧 Password Reset Flow
+- 🌍 Live Deployment (maybe 🚀)
+- 🎨 More polish on UI/UX
+
+---
+
+Made with ❤️ by [jmae9722](https://github.com/jmae9722)
