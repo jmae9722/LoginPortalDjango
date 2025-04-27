@@ -1,48 +1,90 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Grades | Ester University</title>
-  {% load static %}
+  <title>Grades | Smart Campus System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-<body>
+<body class="bg-light">
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-logo">Ester University</div>
-    <ul>
-      <li><a href="/dashboard/">Dashboard</a></li>
-      <li><a href="/grades/">Grades</a></li>
-      <li><a href="/profile/">Profile</a></li>
-      <li><a href="/logout/">Logout</a></li>
-    </ul>
-  </nav>
-
-  <div class="grades-container">
-    <h1>Your Grades</h1>
-
-    <div class="grades-note">
-      Copy and paste these into your GPA calculator for results.
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Smart Campus</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/dashboard/">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/grades/">Grades</a></li>
+        <li class="nav-item"><a class="nav-link" href="/profile/">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout/">Logout</a></li>
+      </ul>
     </div>
-
-    <table class="grades-table">
-      <thead>
-        <tr>
-          <th>Course</th>
-          <th>Grade</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for course, grade in grades.items %}
-        <tr>
-          <td>{{ course }}</td>
-          <td>{{ grade }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
   </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <div class="bg-white p-4 rounded shadow-sm">
+    <h1 class="text-center mb-4">📚 My Grades</h1>
+
+    <ul class="list-group mb-5">
+      {% for course, grade in grades.items %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ course }}
+          <span class="badge bg-primary rounded-pill">{{ grade }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <hr>
+
+    <!-- GPA Calculator Section -->
+    <section class="mt-5">
+      <h2 class="text-center mb-4">🎯 GPA Calculator</h2>
+      <p>Enter each course and grade (no credits needed):</p>
+      <textarea id="gpa-input" class="form-control mb-3" rows="5" placeholder="Example: Math A\nHistory B+"></textarea>
+      
+      <div class="text-center">
+        <button onclick="calculateGPA()" class="btn btn-success">Calculate GPA</button>
+      </div>
+
+      <h3 class="text-center mt-3">Your GPA: <span id="gpa-output">--</span></h3>
+    </section>
+
+  </div>
+</div>
+
+<script>
+function calculateGPA() {
+    const input = document.getElementById('gpa-input').value.trim().split('\n');
+    let totalPoints = 0;
+    let totalCourses = 0;
+
+    const gradeMap = {
+      'A': 4.0, 'A-': 3.7,
+      'B+': 3.3, 'B': 3.0, 'B-': 2.7,
+      'C+': 2.3, 'C': 2.0, 'C-': 1.7,
+      'D+': 1.3, 'D': 1.0, 'F': 0.0
+    };
+
+    for (let line of input) {
+        let parts = line.trim().split(' ');
+        const grade = parts[parts.length - 1].toUpperCase();
+
+        if (gradeMap.hasOwnProperty(grade)) {
+            totalPoints += gradeMap[grade];
+            totalCourses += 1;
+        }
+    }
+
+    const gpa = totalCourses ? (totalPoints / totalCourses).toFixed(2) : "--";
+    document.getElementById('gpa-output').innerText = isNaN(gpa) ? "Invalid input" : gpa;
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -1,45 +1,83 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Student Dashboard | Ester University</title>
-  {% load static %}
+  <title>Student Dashboard | Smart Campus System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
+  
 
-  <!-- Nav -->
-  <nav>
-    <div class="nav-logo">Ester University</div>
-    <ul>
-      <li><a href="/dashboard/">Dashboard</a></li>
-      <li><a href="/grades/">Grades</a></li>
-      <li><a href="/profile/">Profile</a></li>
-      <li><a href="/logout/">Logout</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Section -->
-  <div class="dashboard-container">
-    <h1>Welcome, {{ username }}</h1>
-    <p>Major: {{ major }}</p>
-    <p>Role: {{ role }}</p>
-
-    <section class="gpa-section">
-      <h2>GPA Calculator</h2>
-      <form method="POST">
-        {% csrf_token %}
-        <label for="courses">Enter your courses and grades (e.g. Math 101: A)</label>
-        <textarea name="courses" placeholder="One per line..." rows="6"></textarea>
-        <button type="submit">Calculate GPA</button>
-      </form>
-      {% if gpa %}
-        <div class="gpa-result">
-          <strong>Your GPA: {{ gpa }}</strong>
-        </div>
-      {% endif %}
-    </section>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Smart Campus</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/dashboard/">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/grades/">Grades</a></li>
+        <li class="nav-item"><a class="nav-link" href="/profile/">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout/">Logout</a></li>
+      </ul>
+    </div>
   </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  
+  <div class="dashboard-container p-4 bg-white rounded shadow-sm">
+    <h1 class="mb-4 text-center">Welcome, {{ username }}</h1>
+    <p class="text-center"><strong>Major:</strong> {{ major }}</p>
+    <p class="text-center"><strong>Role:</strong> {{ role|title }}</p>
+
+    <hr>
+
+    <!-- My Courses Section -->
+    <section class="mt-4">
+      <h2>📚 My Courses</h2>
+      <ul class="list-group">
+        <li class="list-group-item">Math 101 - Intro to Algebra</li>
+        <li class="list-group-item">History 201 - World Civilizations</li>
+        <li class="list-group-item">Biology 105 - Fundamentals of Biology</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <!-- Campus Alerts Section -->
+    <section class="mt-4">
+      <h2>📢 Campus Alerts</h2>
+      <div class="alert alert-warning" role="alert">
+        🚨 Fire drill scheduled Friday at 2PM.
+      </div>
+      <div class="alert alert-info" role="alert">
+        📢 Registration for Fall Semester closes next week.
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- Quick Actions Section -->
+    <section class="mt-4 text-center">
+      <h2>🔗 Quick Actions</h2>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <a href="/grades/" class="btn btn-primary">View My Grades</a>
+        <a href="/courses/register/" class="btn btn-success">Register for Courses</a>
+        <a href="/profile/" class="btn btn-outline-secondary">Update Profile</a>
+        <a href="/logout/" class="btn btn-danger">Logout</a>
+      </div>
+    </section>
+
+  </div>
+
+</div>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

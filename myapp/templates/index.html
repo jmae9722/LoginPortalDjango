@@ -1,75 +1,69 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login | Ester University</title>
-  {% load static %}
+  <title>Login | Smart Campus System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-<body>
+<body class="bg-light">
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-logo">Ester University</div>
-    <ul>
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/register/">Register</a></li>
-    </ul>
-  </nav>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Smart Campus</a>
+  </div>
+</nav>
 
-  <!-- Login Section -->
-  <div class="login-wrapper">
-    <div class="login-box">
-      <h2>Welcome to Ester University Portal</h2>
+<!-- Login Form Section -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="login-box bg-white p-5 rounded shadow-sm">
+    <h1 class="text-center mb-4">🔒 Login</h1>
 
-      {% if messages %}
-        {% for message in messages %}
-          <p class="error-msg">{{ message }}</p>
-        {% endfor %}
-      {% endif %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
 
-      <form method="post">
-        {% csrf_token %}
+    <form method="POST" novalidate>
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" required placeholder="Enter your username">
+      </div>
 
-        <!-- Role Dropdown -->
-        <label for="role">Select Role:</label>
-        <select name="role" id="role" onchange="showLoginFields()" required>
-          <option value="">-- Choose your role --</option>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required placeholder="Enter your password">
+      </div>
+
+      <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <select name="role" class="form-select" required>
+          <option value="">Select your role</option>
           <option value="student">Student</option>
           <option value="faculty">Faculty</option>
           <option value="admin">Admin</option>
         </select>
-
-        <!-- Hidden fields -->
-        <div id="login-fields" class="login-fields">
-          <input type="text" name="username" placeholder="Username">
-          <input type="password" name="password" placeholder="Password">
-          <button type="submit">Login</button>
-        </div>
-      </form>
-
-      <div class="register-note">
-        New here? <a href="/register/">Register your account</a>
       </div>
+
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+
+    <div class="register-note mt-4 text-center">
+      Don't have an account? <a href="/register/">Register here</a>
     </div>
   </div>
+</div>
 
-  <script>
-    function showLoginFields() {
-      const role = document.getElementById("role").value;
-      const loginFields = document.getElementById("login-fields");
-      if (role !== "") {
-        loginFields.style.display = "flex";
-        loginFields.style.flexDirection = "column";
-        loginFields.style.gap = "1rem";
-        loginFields.querySelectorAll("input").forEach(field => field.required = true);
-      } else {
-        loginFields.style.display = "none";
-        loginFields.querySelectorAll("input").forEach(field => field.required = false);
-      }
-    }
-  </script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
